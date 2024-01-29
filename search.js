@@ -4,7 +4,6 @@ const searchInput = document.getElementById('search-input');
 
 searchInput.addEventListener('input', function () {
   const searchTerm = searchInput.value.toLowerCase();
-  console.log('Valor do campo de busca:',`http://localhost:3000/artists?name=${searchTerm}`);
   if (searchTerm === '') {
     resultArtist.classList.add('hidden');
     playlistContainer.classList.remove('hidden');
@@ -14,8 +13,7 @@ searchInput.addEventListener('input', function () {
 });
 
 function requestApi(searchTerm) {
-    console.log('Valor do argumento da função requestApi:', searchTerm);
-    fetch(`http://localhost:3000/artists?name=${searchTerm}`)
+    fetch(`http://localhost:3000/artists?name_like=${searchTerm}`)
     .then((response) => response.json())
     .then((results) => displayResults(results));
 }
